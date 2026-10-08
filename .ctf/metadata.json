@@ -1,0 +1,14 @@
+{
+  "title": "OWASP SKF Server-Side Template Injection",
+  "description": "A Python 2 Flask application whose 404 page pastes the requested URL into a Jinja2 template string and renders it.",
+  "question": "Inject a Jinja2 expression through the URL and escalate it to run a command on the server (server-side template injection).",
+  "category": "WEB",
+  "difficulty": 2,
+  "evidence_kind": "SECRET",
+  "capabilities": [
+    "ssti",
+    "jinja2",
+    "remote-code-execution",
+    "injection"
+  ]
+}

@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://www.isoloom.com/schema/v1.json
+# OWASP SKF Server-Side Template Injection (OWASP Security Knowledge Framework labs, by Glenn ten Cate, Riccardo ten Cate and the SKF contributors) as an Isoloom spec:
+# a Flask (Python 2) error page that formats the requested URL into a Jinja2 template before rendering it (SSTI). The SKF lab folder python/SSTI is
+# vendored unchanged in app/ and built by its own Dockerfile.
+# `isoloom generate`, then `isoloom run docker`.
+version: 1
+name: skf-ssti
+
+networks:
+  lab: { cidr: 10.60.154.0/24, internet: false }
+
+machines:
+  web:
+    networks: { lab: 10 }
+    services: [{ port: 5000, name: web, http: true, publish: 5050 }]
+    resources: { cpus: 1, memory_mb: 256 }
+    docker:
+      build: app
+
+checks:
+  - name: the lab answers
+    http: http://web:5000/static/css/styles.css
+    wait: 120
+  - name: the 404 page writes the requested URL into the page
+    script: checks/notfound.sh
+
+message: |
+  OWASP SKF Server-Side Template Injection answers at http://localhost:{{ machines.web.services.0.publish }}/.
+  Ask for a page that does not exist and read the error page.
