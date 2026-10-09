@@ -4,11 +4,5 @@
   "question": "Inject a Jinja2 expression through the URL and escalate it to run a command on the server (server-side template injection).",
   "category": "WEB",
   "difficulty": 2,
-  "evidence_kind": "SECRET",
-  "capabilities": [
-    "ssti",
-    "jinja2",
-    "remote-code-execution",
-    "injection"
-  ]
+  "evidence_kind": "SECRET"
 }
