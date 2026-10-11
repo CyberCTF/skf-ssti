@@ -1,0 +1,52 @@
+{
+  "objectives": [
+    {
+      "key": "main",
+      "title": "Read the flag",
+      "prompt": "Turn template injection into command execution and read /ctf/flag.",
+      "check": {
+        "evidence": "SECRET",
+        "format": "FLAG{%s}"
+      },
+      "dev": "FLAG{dev-skf-ssti}",
+      "hints": [
+        "The not-found page shows the URL you requested. Is it rendered as a template?",
+        "Read about Jinja2 server-side template injection."
+      ],
+      "steps": [
+        {
+          "key": "page",
+          "title": "Find the reflection",
+          "prompt": "Which error page reflects the requested URL? (status code)",
+          "check": {
+            "answer_regex": "^\\s*404\\s*$"
+          }
+        },
+        {
+          "key": "engine",
+          "title": "Identify the engine",
+          "prompt": "Which template engine renders it?",
+          "check": {
+            "answer": [
+              "jinja2",
+              "jinja"
+            ]
+          }
+        },
+        {
+          "key": "class",
+          "title": "Name the weakness",
+          "prompt": "What class of vulnerability is this? (acronym accepted)",
+          "check": {
+            "answer": [
+              "ssti",
+              "server-side template injection",
+              "server side template injection",
+              "template injection"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
