@@ -1,8 +1,11 @@
 {
+  "project_name": "cyberlabs-skf-ssti",
+  "slug": "skf-ssti",
   "title": "OWASP SKF Server-Side Template Injection",
   "description": "A Python 2 Flask application whose 404 page pastes the requested URL into a Jinja2 template string and renders it.",
-  "question": "Inject a Jinja2 expression through the URL, escalate it to run a command on the server and read /ctf/flag (server-side template injection).",
-  "category": "WEB",
+  "category": "web",
   "difficulty": 2,
-  "evidence_kind": "SECRET"
+  "evidence_kind": "SECRET",
+  "capabilities": [],
+  "question": "Inject a Jinja2 expression through the URL, escalate it to run a command on the server and read /ctf/flag (server-side template injection)."
 }
